@@ -34,11 +34,12 @@
             this.lblControlNumber = new System.Windows.Forms.Label();
             this.txtControlNumber = new System.Windows.Forms.TextBox();
             this.plnControls = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCreatcontols
             // 
-            this.btnCreatcontols.Location = new System.Drawing.Point(109, 164);
+            this.btnCreatcontols.Location = new System.Drawing.Point(125, 142);
             this.btnCreatcontols.Name = "btnCreatcontols";
             this.btnCreatcontols.Size = new System.Drawing.Size(108, 35);
             this.btnCreatcontols.TabIndex = 0;
@@ -53,7 +54,7 @@
             "Button",
             "TextBox",
             "Label"});
-            this.cbxControltype.Location = new System.Drawing.Point(131, 82);
+            this.cbxControltype.Location = new System.Drawing.Point(147, 60);
             this.cbxControltype.Name = "cbxControltype";
             this.cbxControltype.Size = new System.Drawing.Size(121, 21);
             this.cbxControltype.TabIndex = 1;
@@ -62,7 +63,7 @@
             // lblControlType
             // 
             this.lblControlType.AutoSize = true;
-            this.lblControlType.Location = new System.Drawing.Point(35, 82);
+            this.lblControlType.Location = new System.Drawing.Point(51, 60);
             this.lblControlType.Name = "lblControlType";
             this.lblControlType.Size = new System.Drawing.Size(69, 13);
             this.lblControlType.TabIndex = 2;
@@ -71,7 +72,7 @@
             // lblControlNumber
             // 
             this.lblControlNumber.AutoSize = true;
-            this.lblControlNumber.Location = new System.Drawing.Point(26, 119);
+            this.lblControlNumber.Location = new System.Drawing.Point(42, 97);
             this.lblControlNumber.Name = "lblControlNumber";
             this.lblControlNumber.Size = new System.Drawing.Size(100, 13);
             this.lblControlNumber.TabIndex = 3;
@@ -79,7 +80,7 @@
             // 
             // txtControlNumber
             // 
-            this.txtControlNumber.Location = new System.Drawing.Point(132, 116);
+            this.txtControlNumber.Location = new System.Drawing.Point(148, 94);
             this.txtControlNumber.Name = "txtControlNumber";
             this.txtControlNumber.Size = new System.Drawing.Size(100, 20);
             this.txtControlNumber.TabIndex = 4;
@@ -92,11 +93,23 @@
             this.plnControls.Size = new System.Drawing.Size(324, 412);
             this.plnControls.TabIndex = 5;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(302, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Student";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(389, 653);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.plnControls);
             this.Controls.Add(this.txtControlNumber);
             this.Controls.Add(this.lblControlNumber);
@@ -105,6 +118,7 @@
             this.Controls.Add(this.btnCreatcontols);
             this.Name = "Form1";
             this.Text = "Homework 1 Ahmed Altamari AF0530";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,6 +132,7 @@
         private System.Windows.Forms.Label lblControlNumber;
         private System.Windows.Forms.TextBox txtControlNumber;
         private System.Windows.Forms.Panel plnControls;
+        private System.Windows.Forms.Button button1;
     }
 }
 

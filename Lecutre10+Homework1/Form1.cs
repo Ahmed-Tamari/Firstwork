@@ -19,7 +19,7 @@ namespace Lecutre10_Homework1
 
         private void btnCreatcontols_Click(object sender, EventArgs e)
         {
-
+           
             int numberofcontrols = int.Parse(txtControlNumber.Text);
             if (cbxControltype.SelectedItem.ToString() == "Button") 
 
@@ -33,6 +33,7 @@ namespace Lecutre10_Homework1
                     newButton.Name = "Button " + (i + 1);
                     newButton.Size = new Size(120, 40);
                     newButton.Location = new Point(0, (i * 50));
+                    newButton.BackColor = Color.Red;
                     plnControls.Controls.Add(newButton);
 
                 }
@@ -47,8 +48,8 @@ namespace Lecutre10_Homework1
                 for (int i = 0; i < numberofcontrols; i++)
                 {
                     TextBox newTextBox = new TextBox();
-                    newTextBox.Text = "TextBox " + (i + 1);
-                    newTextBox.Name = "TextBox " + (i + 1);
+                    newTextBox.Text = "Text Box " + (i + 1);
+                    newTextBox.Name = "Text Box " + (i + 1);
                     newTextBox.Size = new Size(120, 40);
                     newTextBox.Location = new Point(0, (i * 50));
                     plnControls.Controls.Add(newTextBox);
@@ -66,6 +67,7 @@ namespace Lecutre10_Homework1
                     newLabel.Name = "Label" + (i + 1);
                     newLabel.Size = new Size(120, 40);
                     newLabel.Location = new Point(0, (i * 50));
+                    newLabel.BackColor = Color.Green;
                     plnControls.Controls.Add(newLabel);
 
                 }
@@ -82,6 +84,16 @@ namespace Lecutre10_Homework1
         private void cbxControltype_DrawItem(object sender, DrawItemEventArgs e)
         {
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Student : Ahmed Altamari \n ID : AF0530 ");
         }
     }
 }
