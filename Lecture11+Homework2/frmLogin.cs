@@ -12,60 +12,82 @@ namespace Lecture11_Homework2
 {
     public partial class frmLogin : Form
     {
-        public Users[] User = new Users[5];
-        
+        private List<Users> User = new List<Users>();
+        private Users User0, User1, User2, User3, User4;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Users result = User.Find(User => User.UserName == txtUserName.Text);
+            if (result.ToString() == txtUserName.Text)
+            {
+                MessageBox.Show("Wellcome " + result.FullName);
+            }
+            else
+            {
+                MessageBox.Show("User Doenst Exist");
+            }
+
+
+        }
 
         public frmLogin()
         {
             InitializeComponent();
-           
+
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            User[0]=new Users();
-            User[0].UserId = 0;
-            User[0].UserName = "AT";
-            User[0].FullName = "AHMED ALTAMARI";
-            User[0].Password = "016";
+            User0 = new Users();
+            User0.UserId = 0;
+            User0.UserName = "AT";
+            User0.FullName = "AHMED ALTAMARI";
+            User0.Password = "016";
             //===================================
-            User[1] = new Users();
-            User[1].UserId = 1;
-            User[1].UserName = "YE";
-            User[1].FullName = "Yousef Yaser";
-            User[1].Password = "2018";
+            User1 = new Users();
+            User1.UserId = 1;
+            User1.UserName = "YE";
+            User1.FullName = "Yousef Yaser";
+            User1.Password = "2018";
             //===================================
-            User[2] = new Users();
-            User[2].UserId = 2;
-            User[2].UserName = "AS";
-            User[2].FullName = "Ala Souhail";
-            User[2].Password = "1996";
+            User2 = new Users();
+            User2.UserId = 2;
+            User2.UserName = "AS";
+            User2.FullName = "Ala Souhail";
+            User2.Password = "1996";
             //===================================
-            User[3] = new Users();
-            User[3].UserId = 1;
-            User[3].UserName = "HM";
-            User[3].FullName = "Hassan Malik";
-            User[3].Password = "2000";
+            User3 = new Users();
+            User3.UserId = 3;
+            User3.UserName = "HM";
+            User3.FullName = "Hassan Malik";
+            User3.Password = "2000";
             //===================================
-            User[4] = new Users();
-            User[4].UserId = 1;
-            User[4].UserName = "SM";
-            User[4].FullName = "Shadi Mohamed";
-            User[4].Password = "2002";
+            User4 = new Users();
+            User4.UserId = 4;
+            User4.UserName = "SM";
+            User4.FullName = "Shadi Mohamed";
+            User4.Password = "2002";
+
+            User.Add(User0);
+            User.Add(User1);
+            User.Add(User2);
+            User.Add(User3);
+            User.Add(User4);
+
 
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            for (int i=0;i<5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                if (User[i].UserName !=txtUserName.Text )
+                if (User[i].UserName != txtUserName.Text)
                 {
                     MessageBox.Show("User Doenst Exist");
                 }
                 else
                 {
-                    if (User[i].Password==txtPassword.Text)
+                    if (User[i].Password == txtPassword.Text)
                     {
                         MessageBox.Show("Wellcome " + User[i].FullName);
                     }
