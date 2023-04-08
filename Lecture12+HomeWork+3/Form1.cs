@@ -13,7 +13,7 @@ namespace Lecture12_HomeWork_3
     public partial class Form1 : Form
     {
         double Result=0;
-        int op;
+        string op;
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +33,10 @@ namespace Lecture12_HomeWork_3
             button9.Click += new EventHandler(My_Custom_Handler);
             button10.Click += new EventHandler(My_Custom_Handler);
             button18.Click += new EventHandler(My_Custom_Handler);
+            button11.Click += new EventHandler(My_Custom_Handler2);
+            button12.Click += new EventHandler(My_Custom_Handler2);
+            button13.Click += new EventHandler(My_Custom_Handler2);
+            button14.Click += new EventHandler(My_Custom_Handler2);
 
 
         }
@@ -42,67 +46,17 @@ namespace Lecture12_HomeWork_3
            txtScreen.Text = txtScreen.Text+((Button)sender).Text;
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        private void My_Custom_Handler2(object sender, EventArgs e)
         {
             
             Result =double.Parse(txtScreen.Text);
             txtScreen.Text = "";
-            op = 1;
+            op = ((Button)sender).Text;
         }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-
-            switch (op)
-            {
-                case 1:
-                    Result = Result + (double.Parse(txtScreen.Text));
-                    txtScreen.Text = Result.ToString();
-                    break;
-                    case 2:
-                    Result = Result - (double.Parse(txtScreen.Text));
-                    txtScreen.Text = Result.ToString();
-                    break;
-                    case 3:
-                    Result = Result * (double.Parse(txtScreen.Text));
-                    txtScreen.Text = Result.ToString();
-                    break;
-                    case 4:
-                    Result = Result / (double.Parse(txtScreen.Text));
-                    txtScreen.Text = Result.ToString();
-                    break;
-                default:
-                    break;
-            }
-                    
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            Result = (double.Parse(txtScreen.Text));
-            txtScreen.Text = "";
-            op = 2;
-
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            Result = double.Parse(txtScreen.Text);
-            txtScreen.Text = "";
-            op = 3;
-        }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-            Result = double.Parse(txtScreen.Text);
-            txtScreen.Text = "";
-            op = 4;
-        }
-
         private void button16_Click(object sender, EventArgs e)
         {
             txtScreen.Text = "";
-            op = 0;
+            op = "";
             Result = 0;
         }
 
@@ -111,19 +65,32 @@ namespace Lecture12_HomeWork_3
             MessageBox.Show("AHMED ALTAMARI AF0530");
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void button15_Click(object sender, EventArgs e)
         {
 
+            switch (op)
+            {
+                case "+":
+                    Result = Result + (double.Parse(txtScreen.Text));
+                    txtScreen.Text = Result.ToString();
+                    break;
+                    case "-":
+                    Result = Result - (double.Parse(txtScreen.Text));
+                    txtScreen.Text = Result.ToString();
+                    break;
+                    case "*":
+                    Result = Result * (double.Parse(txtScreen.Text));
+                    txtScreen.Text = Result.ToString();
+                    break;
+                    case "/":
+                    Result = Result / (double.Parse(txtScreen.Text));
+                    txtScreen.Text = Result.ToString();
+                    break;
+                default:
+                    break;
+            }
+                    
         }
-
-        private void txtScreen_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-
-        }
+                 
     }
 }
