@@ -40,7 +40,6 @@
             this.txtJob = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.plnINfo = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // txtName
@@ -150,19 +149,11 @@
             this.dateTimePicker1.Value = new System.DateTime(2004, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // plnINfo
-            // 
-            this.plnINfo.Location = new System.Drawing.Point(94, 400);
-            this.plnINfo.Name = "plnINfo";
-            this.plnINfo.Size = new System.Drawing.Size(420, 193);
-            this.plnINfo.TabIndex = 12;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(590, 605);
-            this.Controls.Add(this.plnINfo);
+            this.ClientSize = new System.Drawing.Size(575, 429);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -198,7 +189,6 @@
         private System.Windows.Forms.TextBox txtJob;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Panel plnINfo;
     }
 }
 
