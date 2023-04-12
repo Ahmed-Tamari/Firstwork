@@ -50,12 +50,12 @@ namespace Lecture12_HomeWork_3
         {
             
             Result =double.Parse(txtScreen.Text);
-            txtScreen.Text = "";
+            txtScreen.Text = "0";
             op = ((Button)sender).Text;
         }
         private void button16_Click(object sender, EventArgs e)
         {
-            txtScreen.Text = "";
+            txtScreen.Text = "0";
             op = "";
             Result = 0;
         }
