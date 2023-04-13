@@ -17,7 +17,7 @@ namespace Lecture13_HomeWork_4
             InitializeComponent();
         }
 
-        // Check Entry__________________________________________________________________________
+        // Check Entry____________________________________________________________
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
@@ -48,7 +48,7 @@ namespace Lecture13_HomeWork_4
                 e.Handled = true;
             }
         }
-        // Check Entry__________________________________________________________________________
+        // Check Entry_________________________________________________________________
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string name;
@@ -67,18 +67,39 @@ namespace Lecture13_HomeWork_4
                 age = int.Parse(txtAge.Text);
                 job = txtJob.Text;
                 study = txtStudy.Text;
-                MessageBox.Show("Name :" + name + "\n" + "Age :" + age+"\n"+"Job"+job+"\n"+"Study"+study);
+                dateTimePicker1 = new DateTimePicker();
+
+                MessageBox.Show("Name :" + name + "\n" + "Age :" + age+"\n"+"DoB:"+dateTimePicker1.Value.ToShortDateString()+"\n"+"Job"+job+"\n"+"Study"+study);
             }
+
+
+            try
+            {
+                if (int.Parse(txtAge.Text)<18)
+                {
+                    dateTimePicker1.Value = DateTime.Now;
+                }
+             
+                
+
+            }
+            catch(Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + "\n" + "Date and Birth is Flase");
+            }
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-           dateTimePicker1 = new DateTimePicker();
+         
            
         }
     } 
