@@ -1,106 +1,142 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lecture13_HomeWork_4
 {
-    public partial class Form1 : Form
+
+    public partial class Form : System.Windows.Forms.Form
     {
-        public Form1()
+        private List<string> countries;
+        private Dictionary<string, List<string>> cities;
+
+        // Constructor
+        public Form()
         {
             InitializeComponent();
+
+            // Initialize countries and cities data
+            countries = new List<string> { "Jordan", "Syria", "Saudi Aarbia" };
+            cities = new Dictionary<string, List<string>>();
+            cities.Add("Jordan", new List<string> { "Amman", "Irbid", "Karak" });
+            cities.Add("Syria", new List<string> { "Damascus", "Hama", "Tartus" });
+            cities.Add("Saudi Aarbia", new List<string> { "Ryadh", "Jaddah", "Damam" });
+
+            // Populate country combo box
+            cmbCountry.DataSource = countries;
         }
 
-        // Check Entry____________________________________________________________
-        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        // Event handler for country selection change
+        private void cmbCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            string selectedCountry = cmbCountry.SelectedItem.ToString();
+            if (cities.ContainsKey(selectedCountry))
             {
-                e.Handled = true;//dont write in text box 
+                // Populate city combo box based on selected country
+                cmbCity.DataSource = cities[selectedCountry];
             }
         }
 
-        private void txtAge_KeyPress(object sender, KeyPressEventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            string nationalNumber = txtNationalNumber.Text;
+            string fullName = txtFullName.Text;
+            DateTime dateOfBirth = dtpDateOfBirth.Value;
+            string country = cmbCountry.SelectedItem.ToString();
+            string city = cmbCity.SelectedItem?.ToString();
+            string gender = rdoMale.Checked ? "Male" : "Female";
+            string Jobtime = rdoPart.Checked ? "Part Time" : "Full Time";
+            List<string> skills = new List<string>();
+            foreach (var item in clbSkills2.CheckedItems)
             {
-                e.Handled = true;//dont write in text box 
+                skills.Add(item.ToString());
             }
+
+            // Create an instance of Employee class
+            Employee newEmployee = new Employee(nationalNumber, fullName, dateOfBirth, country, city, gender, skills,Jobtime);
+            int age = DateTime.Now.Year - dateOfBirth.Year;
+            if (dateOfBirth > DateTime.Now.AddYears(-age)) age--;
+            if (age < 22)
+            {
+                MessageBox.Show("Employee Age cannot be less than 22 at the time of Registration.");
+                return;
+            }
+
+            // Print summary message
+            string summary = $"Employee Information:\n\n" +
+                $"National Number: {newEmployee.NationalNumber}\n" +
+                $"Full Name: {newEmployee.FullName}\n" +
+                $"Date of Birth: {newEmployee.DateOfBirth.ToShortDateString()}\n" +
+                $"Country: {newEmployee.Country}\n" +
+                $"City: {newEmployee.City}\n" +
+                $"Gender: {newEmployee.Gender}\n" +
+                $"Job Time: {newEmployee.Jobtime}\n"+
+                $"Skills: {string.Join(", ", newEmployee.Skills)}";
+            lblAf0530.Visible = true;
+            MessageBox.Show("Employee "+newEmployee.FullName+" has Registared");
+            MessageBox.Show(summary, "Employee Registration Summary", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+       
         }
-        private void txtJob_KeyPress(object sender, KeyPressEventArgs e)
+
+        private void Form_Load(object sender, EventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+
         }
 
-        private void txtStudy_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNationalNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled = true; // Do not show any characters on the textbox
             }
         }
-        // Check Entry_________________________________________________________________
-        private void btnSubmit_Click(object sender, EventArgs e)
+
+        private void txtFullName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string name;
-            int age;
-            string job;
-            string study;
-
-            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtAge.Text)||string.IsNullOrEmpty(txtStudy.Text)||string.IsNullOrEmpty(txtJob.Text) )
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
-                MessageBox.Show("Enter Valid Data in all Fields");
-
+                e.Handled = true; // Do not show any characters on the textbox
             }
-            else
-            {
-                name = txtName.Text;
-                age = int.Parse(txtAge.Text);
-                job = txtJob.Text;
-                study = txtStudy.Text;
-                dateTimePicker1 = new DateTimePicker();
-
-                MessageBox.Show("Name :" + name + "\n" + "Age :" + age+"\n"+"DoB:"+dateTimePicker1.Value.ToShortDateString()+"\n"+"Job"+job+"\n"+"Study"+study);
-            }
-
-
-            try
-            {
-                if (int.Parse(txtAge.Text)<18)
-                {
-                    dateTimePicker1.Value = DateTime.Now;
-                }
-             
-                
-
-            }
-            catch(Exception ex)
-            {
-
-                MessageBox.Show(ex.Message + "\n" + "Date and Birth is Flase");
-            }
-
-
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void clbSkills2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
-         
-           
+
         }
-    } 
+
+      
+    }
+
+    // Employee class to hold employee information
+    public class Employee
+    {
+        public string NationalNumber { get; set; }
+        public string FullName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Gender { get; set; }
+        public string skills { get; set; }
+        public string Jobtime { get; set; }
+        public List<string> Skills { get; set; }
+
+        public Employee(string nationalNumber, string fullName, DateTime dateOfBirth, string country, string city, string gender, List<string> skills,string jobtime)
+        {
+            NationalNumber = nationalNumber;
+            FullName = fullName;
+            DateOfBirth = dateOfBirth;
+            Country = country;
+            City = city;
+            Gender = gender;
+            Skills = skills;
+            Jobtime = jobtime;
+        }
+    }
 }
