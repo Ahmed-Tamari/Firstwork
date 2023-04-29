@@ -12,7 +12,12 @@ namespace Lecture_19
 {
     public partial class ucEmployeeCard : UserControl
     {
-        public string EmpId { get; set; }
+        
+        public string EmpId { get ; set; }
+        public string EmpName { get; set; }
+        public string EmpJop { get; set; }
+        public string EmpTel { get; set; }
+
 
         public ucEmployeeCard()
         {
@@ -21,7 +26,10 @@ namespace Lecture_19
 
         private void ucEmployeeCard_Load(object sender, EventArgs e)
         {
-
+            txtId.Text = EmpId;
+            txtName.Text = EmpName;
+            txtJob.Text = EmpJop;
+            txtTelephone.Text = EmpTel; 
         }
     }
 }

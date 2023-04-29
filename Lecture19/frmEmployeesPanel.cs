@@ -42,12 +42,16 @@ namespace Lecture_19
             employees.Add(newEmployee2);
             employees.Add(newEmployee3);
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
                 ucEmployeeCard newEmployeeCard = new ucEmployeeCard();
                 newEmployeeCard.Location = new Point(40, i * newEmployeeCard.Height + 90);
 
-                // You need to fill the employees data here
+                newEmployeeCard.EmpId= employees[i].Id;
+                newEmployeeCard.EmpName = employees[i].Name;
+                newEmployeeCard.EmpJop = employees[i].Job;
+                newEmployeeCard.EmpTel = employees[i].Telephone;
+
 
                 this.Controls.Add(newEmployeeCard);
             }
