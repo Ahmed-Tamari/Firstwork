@@ -22,6 +22,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lecture 19", "Lecture19\Lecture 19.csproj", "{C126856C-4297-4295-8CEF-379F3720B29D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database_AhmedTamari_AF0530", "Database_AhmedTamari_AF0530", "{29BE54CB-AC7A-41AB-AA43-E4C6105F2BAC}"
+	ProjectSection(SolutionItems) = preProject
+		Lecture20.sql = Lecture20.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
